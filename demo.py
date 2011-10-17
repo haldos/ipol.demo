@@ -136,7 +136,7 @@ if __name__ == '__main__':
     cherrypy.config.update(conf_file)
 
     # load the demo collection
-    # from app import demo_dict
+    from app import demo_dict
     # filter out test demos
     if cherrypy.config['server.environment'] == 'production':
         for (demo_id, demo_app) in demo_dict.items():
