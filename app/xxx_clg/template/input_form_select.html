@@ -1,0 +1,77 @@
+%if inputd:
+<form action="${app.base_url + 'input_select'}" method="get">
+<div class="action">
+<h3>Select Data</h3>
+<p>
+Click on an image pair to use it as the algorithm input.
+</p>
+<div style="max-height:30em; overflow:auto;">
+%for id in sorted(inputd.keys()):
+	<div class="thumbgal">
+<p><b>${inputd[id]['title'] | h}</b></p>
+		<div class="gallery" style="height:300px">
+			<ul class="index">
+				<li>
+				<a href="#">image A
+					<span>
+						<input type="image" name="${id | h}"
+						src="${inputd[id]['baseinput']}a.png" alt="image A" />
+					</span>
+				</a>
+				</li>
+				<li>
+				<a href="#">image B
+					<span>
+						<input type="image" name="${id | h}"
+						src="${inputd[id]['baseinput']}b.png" alt="image B" />
+					</span>
+				</a>
+				</li>
+				<li>
+				<a href="#">true flow T
+					<span>
+						<input type="image" name="${id | h}"
+						src="${inputd[id]['baseinput']}t.png" alt="true flow T" />
+					</span>
+				</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+##<div>
+##<input type="image" name="${id | h}" src="${inputd[id]['baseinput']}a.png" />
+##<input type="image" name="${id | h}" src="${inputd[id]['baseinput']}b.png" />
+##<input type="image" name="${id | h}" src="${inputd[id]['baseinput']}f.png" />
+##  <input type="image" name="${id | h}"
+##         src="${url}" alt="${inputd[id]['title'] | h}"/>
+##  <span class="label">${inputd[id]['title'] | h}</span>
+##</div>
+%endfor
+</div>
+
+%if any([inputd[id].has_key('credit') for id in inputd]):
+<p style="font-size: 80%">
+  <a class="toggle"
+     href="#credits"
+     onclick="toggle('credits');">
+    image credits
+  </a>
+</p>
+<div id="credits"
+     style="display:none; font-size: 80%"> 
+  %for id in sorted(inputd.keys()):
+  %for url in inputd[id]['url']:
+  <a href="${url}">
+    <img height="24"
+	 src="${url}" />
+  </a>
+  %endfor
+  ${inputd[id]['credit'] | h}
+  <br/>
+  %endfor
+</div>
+%endif
+
+</div>
+</form>
+%endif

@@ -1,0 +1,143 @@
+<%include file="header.html" />
+
+<!--
+<p>
+You can select which implementations to try.
+</p>
+-->
+
+<h2>Set parameters</h2>
+
+<form action="${app.base_url + 'wait'}" method="get">
+		<input type="hidden" name="key" value="${app.key}">
+
+		<label for="alpha">&alpha; = </label>
+		<input type="text" name="alpha" value="1.0" size="6" />
+		<br />
+
+		<label for="rho">&rho = </label>
+		<input type="text" name="rho" value="0.0" size="6" />
+		<br />
+
+		<label for="sigma">&sigma = </label>
+		<input type="text" name="sigma" value="0.0" size="6" />
+		<br />
+
+		<label for="numit">numIt = </label>
+		<input type="text" name="numit" value="50" size="6" />
+		<br />
+
+		<input type="submit" value="run" />
+
+</form>
+
+<!--
+<h2>Comparison Setup</h2>
+
+<form action="${app.base_url + 'wait'}" method="get">
+	<div class="action">
+		<input type="hidden" name="key" value="${app.key}">
+
+		<fieldset>
+			<legend>Select the methods to compare</legend>
+
+			<input type="checkbox" name="algo" value="truth" checked="checked">
+			<label for="truth">Ground Truth (given)</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="ipolhs" checked="checked">
+			<label for="ipolhs">IPOL's Horn & Schunck</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="mwhs" checked="checked">
+			<label for="mwhs">Megawave's Horn & Schunck</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="ocvhs" checked="checked">
+			<label for="ocvhs">OpenCV's Horn & Schunck</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="ocvff" checked="checked">
+			<label for="ocvff">OpenCV's Farneback</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="ocvlk" checked="checked">
+			<label for="ocvlk">OpenCV's Lucas-Kanade</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="ocvbm" checked="checked">
+			<label for="ocvbm">OpenCV's Block Matching</label>
+			<br />
+
+
+			<input type="checkbox" name="algo" value="ldof" checked="checked">
+			<label for="ldof">Brox's Large Displacement Optical Flow</label>
+			<br />
+
+			<input type="checkbox" name="algo" value="warp" checked="checked">
+			<label for="warp">Brox's Warping Theory</label>
+			<br />
+
+
+			<input type="checkbox" name="algo" value="luis">
+			<label for="luis">Garrido's Multigrid (slow!)</label>
+			<br />
+
+		</fieldset>
+
+		<fieldset>
+			<legend>Select the comparison criteria</legend>
+
+			<input type="checkbox" name="crit" value="angerr">
+			<label for="angerr">Pointwise angular error w.r.t. F</label>
+			<br />
+
+			<input type="checkbox" name="crit" value="abserr">
+			<label for="abserr">Pointwise absolute error w.r.t. F</label>
+			<br />
+
+			<input type="checkbox" name="crit" value="reperr">
+			<label for="reperr">Pointwise reprojection error</label>
+			<br />
+
+			<input type="checkbox" name="crit" value="ofc">
+			<label for="ofc">Pointwise optical-flow constraint error (1st order)</label>
+			<br />
+
+			<input type="checkbox" name="crit" value="ofc2">
+			<label for="ofc2">Pointwise optical-flow constraint error (2nd order)</label>
+			<br />
+
+
+		</fieldset>
+
+
+		<input type="submit" value="run" />
+	</div>
+</form>
+-->
+
+<hr />
+
+<h2>Input data</h2>
+
+<div class="gallery" style="heigth:300px">
+	<ul class="index">
+		<li> <a href="#">input image A<span>
+				<img src="${app.work_url + 'a.png'}" title="A"/>
+			</span></a>
+		</li>
+		<li> <a href="#">input image B<span>
+				<img src="${app.work_url + 'b.png'}" title="B"/>
+			</span></a>
+		</li>
+		<li> <a href="#">flow ground truth F<span>
+				<img src="${app.work_url + 't.png'}" title="T"/>
+			</span></a>
+		</li>
+	</ul>
+</div>
+
+<%include file="footer.html" />
+
+## vim: set ts=2 sw=2:

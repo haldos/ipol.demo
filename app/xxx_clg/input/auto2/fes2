@@ -1,0 +1,68 @@
+do_halfpixel() {
+	N=$1
+	synflow traslation "0.5 0" $N.png - /dev/null|downsa v 2|qeasy 0 255 - halfpixel_b.png
+	synflow traslation "-0.5 0" $N.png - /dev/null|downsa v 2|qeasy 0 255 - halfpixel_a.png
+	synflow traslation "0.5 0" halfpixel_a.png /dev/null halfpixel_f.tiff
+	viewflow -1 halfpixel_f.tiff halfpixel_f.png
+	cp halfpixel_a.png ../${N}_halfpixel/a.png
+	cp halfpixel_b.png ../${N}_halfpixel/b.png
+	cp halfpixel_f.png ../${N}_halfpixel/t.png
+	cp halfpixel_f.tiff ../${N}_halfpixel/t.tiff
+}
+
+do_onepixel() {
+	N=$1
+	synflow traslation "0 -1" $N.png - /dev/null|downsa v 2|qeasy 0 255 - onepixel_b.png
+	synflow traslation "0 1" $N.png - /dev/null|downsa v 2|qeasy 0 255 - onepixel_a.png
+	synflow traslation "0 -1" onepixel_a.png /dev/null onepixel_f.tiff
+	viewflow -1 onepixel_f.tiff onepixel_f.png
+	cp onepixel_a.png ../${N}_onepixel/a.png
+	cp onepixel_b.png ../${N}_onepixel/b.png
+	cp onepixel_f.png ../${N}_onepixel/t.png
+	cp onepixel_f.tiff ../${N}_onepixel/t.tiff
+}
+
+do_hom() {
+	N=$1
+	synflow hom16rc "20 20 20 80 80 20 80 80  20 20 20 80 80 20 79.5 80" $N.png - /dev/null | downsa v 2 | qeasy 0 255 - hom_a.png
+	synflow hom16rc "20 20 20 80 80 20 80 80  20 20 20 80 80 20 80.5 80" $N.png - /dev/null | downsa v 2 | qeasy 0 255 - hom_b.png
+	synflow hom16rc "20 20 20 80 80 20 79.5 80  20 20 20 80 80 20 80.5 80" hom_a.png hom_tra.png hom_f.tiff
+	viewflow -1 hom_f.tiff hom_f.png
+	cp hom_a.png ../${N}_hom/a.png
+	cp hom_b.png ../${N}_hom/b.png
+	cp hom_f.png ../${N}_hom/t.png
+	cp hom_f.tiff ../${N}_hom/t.tiff
+}
+
+do_identity() {
+	N=$1
+	synflow euclidean_rc "0 0 0" $N.png - /dev/null | downsa v 2 | qeasy 0 255 - identity_b.png
+	synflow euclidean_rc "0 0 0" $N.png - /dev/null | downsa v 2 | qeasy 0 255 - identity_a.png
+	synflow euclidean_rc "0 0 0" identity_a.png /dev/null identity_f.tiff
+	viewflow -1 identity_f.tiff identity_f.png
+	cp identity_a.png ../${N}_identity/a.png
+	cp identity_b.png ../${N}_identity/b.png
+	cp identity_f.png ../${N}_identity/t.png
+	cp identity_f.tiff ../${N}_identity/t.tiff
+}
+
+do_rot() {
+	N=$1
+	synflow euclidean_rc "0.3 0 0" $N.png - /dev/null | downsa v 2 | qeasy 0 255 - rot_b.png
+	synflow euclidean_rc "-0.3 0 0" $N.png - /dev/null | downsa v 2 | qeasy 0 255 - rot_a.png
+	synflow euclidean_rc "0.6 0 0" rot_a.png /dev/null rot_f.tiff
+	viewflow -1 rot_f.tiff rot_f.png
+	cp rot_a.png ../${N}_rot/a.png
+	cp rot_b.png ../${N}_rot/b.png
+	cp rot_f.png ../${N}_rot/t.png
+	cp rot_f.tiff ../${N}_rot/t.tiff
+}
+
+for i in lena peppers spiral baboon; do
+	#do_halfpixel $i
+	#do_hom $i
+	#do_rot $i
+	#do_identity $i
+	do_onepixel $i
+done
+

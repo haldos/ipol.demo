@@ -1,0 +1,72 @@
+<%include file="header.html" />
+
+<%
+	algolist = ['clg']
+%>
+
+<p>
+  The algorithms result is displayed hereafter.
+</p>
+
+##<form action="${app.base_url}" method="get">
+##  <div class="action">
+##    Restart this algorithm with new data.
+##    <input type="submit" value="new input" />
+##  </div>
+##</form>
+##
+##<form action="${app.base_url + 'params'}" method="get">
+##  <div class="action">
+##    Restart this algorithm with new parameters.
+##    <input type="hidden" name="key" value="${app.key}">
+##    <input type="hidden" name="newrun" value="1">
+##    <input type="submit" value="new parameters" />
+##  </div>
+##</form>
+##
+##<hr />
+
+<%def name="visual(file,title)">
+<li>
+<a href="#">${title}
+		<span>
+			<img src="${app.work_url + file}" alt="${title}" />
+		</span>
+	</a>
+</li>
+</%def>
+
+
+
+%for a in algolist:
+<h2>Result of algorithm "${a}"</h2>
+<div class="gallery" style="height:300px">
+	<ul class="index">
+		<%
+		x = "F"  if a != "truth" else "T"
+		%>
+		${visual('stuff_%s.png'%a,'%s'%x)}
+		${visual('t.png','Ground Truth')}
+		${visual('stuff_%s_abs.png'%a,'|%s|'%x)}
+		${visual('stuff_%s_div.png'%a,'div(%s)'%x)}
+		${visual('stuff_%s_inv.png'%a,'%s*B'%x)}
+		${visual('a.png','A')}
+		${visual('stuff_%s_apinv.png'%a,'(%s*B + A)/2'%x)}
+		${visual('stuff_%s_aminv.png'%a,'%s*B - A'%x)}
+		%if a != "truth":
+		${visual('stuff_%s_fmt.png'%a,'F-T')}
+		${visual('stuff_%s_afmt.png'%a,'|F-T|')}
+		${visual('stuff_%s_ofce.png'%a,'|grad(I)*F + dI/dt|')}
+		%endif
+	</ul>
+</div>
+%endfor
+
+
+
+<hr />
+
+<%include file="archive_info.html" />
+
+<%include file="footer.html" />
+<!-- vim: set ts=2 sw=2: -->

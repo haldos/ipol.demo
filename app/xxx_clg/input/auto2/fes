@@ -1,0 +1,17 @@
+synflow traslation "0.5 0" lena.png - /dev/null|downsa v 2|qeasy 0 255 - halfpixel_b.png
+synflow traslation "-0.5 0" lena.png - /dev/null|downsa v 2|qeasy 0 255 - halfpixel_a.png
+synflow traslation "0.5 0" halfpixel_a.png /dev/null halfpixel_f.tiff
+viewflow -1 halfpixel_f.tiff halfpixel_f.png
+cp halfpixel_a.png ../lena_halfpixel/a.png
+cp halfpixel_b.png ../lena_halfpixel/b.png
+cp halfpixel_f.png ../lena_halfpixel/t.png
+cp halfpixel_f.tiff ../lena_halfpixel/t.tiff
+
+synflow hom16rc "20 20 20 80 80 20 80 80  20 20 20 80 80 20 79.5 80" lena.png - /dev/null | downsa v 2 | qeasy 0 255 - hom_a.png
+synflow hom16rc "20 20 20 80 80 20 80 80  20 20 20 80 80 20 80.5 80" lena.png - /dev/null | downsa v 2 | qeasy 0 255 - hom_b.png
+synflow hom16rc "20 20 20 80 80 20 79.5 80  20 20 20 80 80 20 80.5 80" hom_a.png hom_tra.png hom_f.tiff
+viewflow -1 hom_f.tiff hom_f.png
+cp hom_a.png ../lena_hom/a.png
+cp hom_b.png ../lena_hom/b.png
+cp hom_f.png ../lena_hom/t.png
+cp hom_f.tiff ../lena_hom/t.tiff

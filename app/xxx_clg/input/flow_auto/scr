@@ -1,0 +1,45 @@
+downsa v 2 baboon.png p_baboon.png
+synflow tr "1 0" baboon.png PNG:- f_0_baboon.tiff | qeasy 0 65535 | downsa v 2 - po_0_baboon.png
+downsa v 2 f_0_baboon.tiff - | faxpb 0.5 0 | tee pf_0_baboon.tiff | viewflow -1 - pv_0_baboon.png
+synflow tr "0.5 0.5" baboon.png PNG:- f_1_baboon.tiff | qeasy 0 65535 | downsa v 2 - po_1_baboon.png
+downsa v 2 f_1_baboon.tiff - | faxpb 0.5 0 | tee pf_1_baboon.tiff | viewflow -1 - pv_1_baboon.png
+synflow tr "0.1 0.1" baboon.png PNG:- f_2_baboon.tiff | qeasy 0 65535 | downsa v 2 - po_2_baboon.png
+downsa v 2 f_2_baboon.tiff - | faxpb 0.5 0 | tee pf_2_baboon.tiff | viewflow -1 - pv_2_baboon.png
+synflow hom "1 0.015873 -2.03177 0 1.03175 -4.06351 1.38243e-09 0.000124008 0.984127" baboon.png PNG:- f_3_baboon.tiff | qeasy 0 65535 | downsa v 2 - po_3_baboon.png
+downsa v 2 f_3_baboon.tiff - | faxpb 0.5 0 | tee pf_3_baboon.tiff | viewflow -1 - pv_3_baboon.png
+downsa v 2 barbara.png p_barbara.png
+synflow tr "1 0" barbara.png PNG:- f_0_barbara.tiff | qeasy 0 65535 | downsa v 2 - po_0_barbara.png
+downsa v 2 f_0_barbara.tiff - | faxpb 0.5 0 | tee pf_0_barbara.tiff | viewflow -1 - pv_0_barbara.png
+synflow tr "0.5 0.5" barbara.png PNG:- f_1_barbara.tiff | qeasy 0 65535 | downsa v 2 - po_1_barbara.png
+downsa v 2 f_1_barbara.tiff - | faxpb 0.5 0 | tee pf_1_barbara.tiff | viewflow -1 - pv_1_barbara.png
+synflow tr "0.1 0.1" barbara.png PNG:- f_2_barbara.tiff | qeasy 0 65535 | downsa v 2 - po_2_barbara.png
+downsa v 2 f_2_barbara.tiff - | faxpb 0.5 0 | tee pf_2_barbara.tiff | viewflow -1 - pv_2_barbara.png
+synflow hom "1 0.015873 -2.03177 0 1.03175 -4.06351 1.38243e-09 0.000124008 0.984127" barbara.png PNG:- f_3_barbara.tiff | qeasy 0 65535 | downsa v 2 - po_3_barbara.png
+downsa v 2 f_3_barbara.tiff - | faxpb 0.5 0 | tee pf_3_barbara.tiff | viewflow -1 - pv_3_barbara.png
+downsa v 2 lena.png p_lena.png
+synflow tr "1 0" lena.png PNG:- f_0_lena.tiff | qeasy 0 65535 | downsa v 2 - po_0_lena.png
+downsa v 2 f_0_lena.tiff - | faxpb 0.5 0 | tee pf_0_lena.tiff | viewflow -1 - pv_0_lena.png
+synflow tr "0.5 0.5" lena.png PNG:- f_1_lena.tiff | qeasy 0 65535 | downsa v 2 - po_1_lena.png
+downsa v 2 f_1_lena.tiff - | faxpb 0.5 0 | tee pf_1_lena.tiff | viewflow -1 - pv_1_lena.png
+synflow tr "0.1 0.1" lena.png PNG:- f_2_lena.tiff | qeasy 0 65535 | downsa v 2 - po_2_lena.png
+downsa v 2 f_2_lena.tiff - | faxpb 0.5 0 | tee pf_2_lena.tiff | viewflow -1 - pv_2_lena.png
+synflow hom "1 0.015873 -2.03177 0 1.03175 -4.06351 1.38243e-09 0.000124008 0.984127" lena.png PNG:- f_3_lena.tiff | qeasy 0 65535 | downsa v 2 - po_3_lena.png
+downsa v 2 f_3_lena.tiff - | faxpb 0.5 0 | tee pf_3_lena.tiff | viewflow -1 - pv_3_lena.png
+downsa v 2 peppers.png p_peppers.png
+synflow tr "1 0" peppers.png PNG:- f_0_peppers.tiff | qeasy 0 65535 | downsa v 2 - po_0_peppers.png
+downsa v 2 f_0_peppers.tiff - | faxpb 0.5 0 | tee pf_0_peppers.tiff | viewflow -1 - pv_0_peppers.png
+synflow tr "0.5 0.5" peppers.png PNG:- f_1_peppers.tiff | qeasy 0 65535 | downsa v 2 - po_1_peppers.png
+downsa v 2 f_1_peppers.tiff - | faxpb 0.5 0 | tee pf_1_peppers.tiff | viewflow -1 - pv_1_peppers.png
+synflow tr "0.1 0.1" peppers.png PNG:- f_2_peppers.tiff | qeasy 0 65535 | downsa v 2 - po_2_peppers.png
+downsa v 2 f_2_peppers.tiff - | faxpb 0.5 0 | tee pf_2_peppers.tiff | viewflow -1 - pv_2_peppers.png
+synflow hom "1 0.015873 -2.03177 0 1.03175 -4.06351 1.38243e-09 0.000124008 0.984127" peppers.png PNG:- f_3_peppers.tiff | qeasy 0 65535 | downsa v 2 - po_3_peppers.png
+downsa v 2 f_3_peppers.tiff - | faxpb 0.5 0 | tee pf_3_peppers.tiff | viewflow -1 - pv_3_peppers.png
+downsa v 2 spiral.png p_spiral.png
+synflow tr "1 0" spiral.png PNG:- f_0_spiral.tiff | qeasy 0 65535 | downsa v 2 - po_0_spiral.png
+downsa v 2 f_0_spiral.tiff - | faxpb 0.5 0 | tee pf_0_spiral.tiff | viewflow -1 - pv_0_spiral.png
+synflow tr "0.5 0.5" spiral.png PNG:- f_1_spiral.tiff | qeasy 0 65535 | downsa v 2 - po_1_spiral.png
+downsa v 2 f_1_spiral.tiff - | faxpb 0.5 0 | tee pf_1_spiral.tiff | viewflow -1 - pv_1_spiral.png
+synflow tr "0.1 0.1" spiral.png PNG:- f_2_spiral.tiff | qeasy 0 65535 | downsa v 2 - po_2_spiral.png
+downsa v 2 f_2_spiral.tiff - | faxpb 0.5 0 | tee pf_2_spiral.tiff | viewflow -1 - pv_2_spiral.png
+synflow hom "1 0.015873 -2.03177 0 1.03175 -4.06351 1.38243e-09 0.000124008 0.984127" spiral.png PNG:- f_3_spiral.tiff | qeasy 0 65535 | downsa v 2 - po_3_spiral.png
+downsa v 2 f_3_spiral.tiff - | faxpb 0.5 0 | tee pf_3_spiral.tiff | viewflow -1 - pv_3_spiral.png

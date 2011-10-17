@@ -1,0 +1,25 @@
+<%include file="header.html" />
+
+<p>
+  You can choose 1 parameter for this algorithm: <i>th</i>.<br />
+  The image will be transformed by the function: if <i>pixel < th</i> then 
+  <i>pixel = 255</i>, else <i>pixel = 0</i>.
+</p>
+
+<form action="${app.base_url + 'wait'}" method="get">
+  <div class="action">
+    Set the algorithm threshold and run the algorithm.
+    <input type="hidden" name="key" value="${app.key}">
+    <label for="a"><i>th</i>:</label>
+    <input type="text" name="th" value="100" size="4" />
+    <input type="submit" value="run" />
+  </div>
+</form>
+
+<hr />
+
+<div>
+  <img src="${app.work_url + 'input_0.png'}" alt="" /> 
+</div>
+
+<%include file="footer.html" />

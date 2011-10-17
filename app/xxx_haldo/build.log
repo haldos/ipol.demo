@@ -1,0 +1,5 @@
+Mon, 03 Oct 2011 16:41:27 UYST : make -C /home/haldo/Documentos/Investigacion/IPOL/ipol_demo_fast/app/xxx_haldo/src/threshold threshold
+make: se ingresa al directorio «/home/haldo/Documentos/Investigacion/IPOL/ipol_demo_fast/app/xxx_haldo/src/threshold»
+gcc -std=c99 -c iio.c -o iio.o
+gcc -std=c99 iio.o threshold.c -ljpeg -lpng -ltiff -o threshold
+make: se sale del directorio «/home/haldo/Documentos/Investigacion/IPOL/ipol_demo_fast/app/xxx_haldo/src/threshold»
