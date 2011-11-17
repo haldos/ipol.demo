@@ -589,9 +589,11 @@ int main(int argc, char *argv[]) {
                         im1_gray[z] =  (6968*im1[3*z] + 23434*im1[3*z + 1] + 2366*im1[3*z + 2])/32768;
                         im2_gray[z] =  (6968*im2[3*z] + 23434*im2[3*z + 1] + 2366*im2[3*z + 2])/32768;
                     }
+                    fprintf(stderr, "images converted to grayscale\n");
                 } else {
                     im1_gray = im1;
                     im2_gray = im2;
+                    fprintf(stderr, "images are already in grayscale\n");
                 }
 
 		// parameters for CLG optical flow calculation
