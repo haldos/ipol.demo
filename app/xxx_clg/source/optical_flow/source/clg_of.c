@@ -584,10 +584,10 @@ int main(int argc, char *argv[]) {
                 float *im1_gray = malloc(w*h*sizeof(float));
                 float *im2_gray = malloc(w*h*sizeof(float));
                 if (pixeldim==3){
-                    int i;
-                    for(i=0;i<w*h;i++){
-                        im1_gray[i] =  (6968*im1[pixeldim*i] + 23434*im1[pixeldim*i + 1] + 2366*im1[pixeldim*i + 2])/32768;
-                        im2_gray[i] =  (6968*im2[pixeldim*i] + 23434*im2[pixeldim*i + 1] + 2366*im2[pixeldim*i + 2])/32768;
+                    int z;
+                    for(z=0;z<w*h;z++){
+                        im1_gray[z] =  (6968*im1[3*z] + 23434*im1[3*z + 1] + 2366*im1[3*z + 2])/32768;
+                        im2_gray[z] =  (6968*im2[3*z] + 23434*im2[3*z + 1] + 2366*im2[3*z + 2])/32768;
                     }
                 } else {
                     im1_gray = im1;
