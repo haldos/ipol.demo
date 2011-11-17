@@ -580,6 +580,19 @@ int main(int argc, char *argv[]) {
 		float *im1 = iio_read_image_float_vec(argv[1], &w, &h, &pixeldim);
 		float *im2 = iio_read_image_float_vec(argv[2], &w, &h, &pixeldim);
 		fprintf(stderr, "Two images loaded:\n\tim,: %dx%d image with %d channel(s)\n\tim2, %dx%d image with %d channel(s)\n", w, h, pixeldim, w, h, pixeldim);
+                
+                float *im1_gray = malloc(w*h*sizeof(float));
+                float *im2_gray = malloc(w*h*sizeof(float));
+                if (pixeldim==3){
+                    int i;
+                    for(i=0;i<w*h;i++){
+                        im1_gray[i] =  (6968*im1[pixeldim*i] + 23434*im1[pixeldim*i + 1] + 2366*im1[pixeldim*i + 2])/32768;
+                        im2_gray[i] =  (6968*im2[pixeldim*i] + 23434*im2[pixeldim*i + 1] + 2366*im2[pixeldim*i + 2])/32768;
+                    }
+                } else {
+                    im1_gray = im1;
+                    im2_gray = im2;
+                }
 
 		// parameters for CLG optical flow calculation
 		// TODO read from console
@@ -610,10 +623,10 @@ int main(int argc, char *argv[]) {
 		int j = 0;
 		for (i=0; i<w; i++) {
 			for (j=0; j<h; j++) {
-				u[w*j+i] = ((double) im2[w*j+i]) - ((double) im1[w*j+i]);
-				v[w*j+i] = ((double) im2[w*j+i]) - ((double) im1[w*j+i]);
-				i1[w*j+i] = ((double) im1[w*j+i]);
-				i2[w*j+i] = ((double) im2[w*j+i]);
+				u[w*j+i] = ((double) im2_gray[w*j+i]) - ((double) im1_gray[w*j+i]);
+				v[w*j+i] = ((double) im2_gray[w*j+i]) - ((double) im1_gray[w*j+i]);
+				i1[w*j+i] = ((double) im1_gray[w*j+i]);
+				i2[w*j+i] = ((double) im2_gray[w*j+i]);
 			}
 		}
 
@@ -652,6 +665,8 @@ int main(int argc, char *argv[]) {
 		//free memory
 		free(im1);
 		free(im2);
+                free(im1_gray);
+                free(im2_gray);
 		free(x);
 		free(u);
 		free(v);
