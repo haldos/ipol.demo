@@ -581,6 +581,7 @@ int main(int argc, char *argv[]) {
 		float *im2 = iio_read_image_float_vec(argv[2], &w, &h, &pixeldim);
 		fprintf(stderr, "Two images loaded:\n\tim,: %dx%d image with %d channel(s)\n\tim2, %dx%d image with %d channel(s)\n", w, h, pixeldim, w, h, pixeldim);
                 
+/*
                 float *im1_gray = malloc(w*h*sizeof(float));
                 float *im2_gray = malloc(w*h*sizeof(float));
                 if (pixeldim==3){
@@ -595,6 +596,7 @@ int main(int argc, char *argv[]) {
                     im2_gray = im2;
                     fprintf(stderr, "images are already in grayscale\n");
                 }
+*/
 
 		// parameters for CLG optical flow calculation
 		// TODO read from console
@@ -625,10 +627,10 @@ int main(int argc, char *argv[]) {
 		int j = 0;
 		for (i=0; i<w; i++) {
 			for (j=0; j<h; j++) {
-				u[w*j+i] = ((double) im2_gray[w*j+i]) - ((double) im1_gray[w*j+i]);
-				v[w*j+i] = ((double) im2_gray[w*j+i]) - ((double) im1_gray[w*j+i]);
-				i1[w*j+i] = ((double) im1_gray[w*j+i]);
-				i2[w*j+i] = ((double) im2_gray[w*j+i]);
+				u[w*j+i] = ((double) im2[w*j+i]) - ((double) im1[w*j+i]);
+				v[w*j+i] = ((double) im2[w*j+i]) - ((double) im1[w*j+i]);
+				i1[w*j+i] = ((double) im1[w*j+i]);
+				i2[w*j+i] = ((double) im2[w*j+i]);
 			}
 		}
 
@@ -667,8 +669,8 @@ int main(int argc, char *argv[]) {
 		//free memory
 		free(im1);
 		free(im2);
-                free(im1_gray);
-                free(im2_gray);
+                // free(im1_gray);
+                // free(im2_gray);
 		free(x);
 		free(u);
 		free(v);
