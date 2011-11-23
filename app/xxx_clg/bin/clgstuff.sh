@@ -83,8 +83,19 @@ echo "P = ${P}"
 #fi
 
 testex test_clg_flow
+testex test_rgb2gray
+testex test_swaptiff
+
+# color conversion (added 18/11/11 by haldo)----#
+test_rgb2gray a.png a.png			#
+test_rgb2gray b.png b.png			#
+# ----------------------------------------------#
 
 test_clg_flow a.png b.png ${ALPHA} ${RHO} ${SIGMA} ${NUMIT} ${P}.tiff
+
+# swap and invert tiff channels (added 18/11/11 by haldo)-------#
+test_swaptiff ${P}.tiff						#
+#---------------------------------------------------------------#
 
 #  stuff_X.{tiff,png}       "F"
 #  stuff_X_div.{tiff,png}   "divF"
