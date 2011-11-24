@@ -104,12 +104,16 @@ class app(base_app):
 
 		## archive
 		#if self.cfg['meta']['original']:
-		#	 ar = self.make_archive()
-		#	 ar.add_file("input_0.orig.png", "original.png", info="uploaded")
-		#	 ar.add_file("input_0.png", "input.png", info="input")
-		#	 ar.add_file("output.png", info="output")
-		#	 ar.add_info({"a": a, "b": b})
-		#	 ar.save()
+		ar = self.make_archive()
+		ar.add_file("a.png", info="input 1")
+		ar.add_file("b.png", info="input 2")
+		ar.add_file("t.png", info="true flow")
+		ar.add_file("stuff_clg.png", info="CLG calculated flow")
+		ar.add_info({"alpha": alpha})
+		ar.add_info({"rho": rho})
+		ar.add_info({"sigma": sigma})
+		ar.add_info({"numit": numit})
+		ar.save()
 
 		return self.tmpl_out("run.html")
 
