@@ -39,30 +39,34 @@ class app(base_app):
 		program build/update
 		"""
 		## store common file path in variables
-		#tgz_file = self.dl_dir + "axpb.tar.gz"
-		#prog_file = self.bin_dir + "axpb"
-		#log_file = self.base_dir + "build.log"
+		tgz_file = self.dl_dir + "clg-87dfe8b.tar.gz"
+		prog_file = self.bin_dir + "test_clg_flow"
+		log_file = self.base_dir + "build_clg.log"
 		## get the latest source archive
-		#build.download("https://edit.ipol.im/meta/dev/axpb.tar.gz", tgz_file)
+		build.download("http://dev.ipol.im/git/?p=haldos/clg.git;a=snapshot;h=87dfe8b1454e0602df8c507a8e7417c3b0a94dcb;sf=tgz", tgz_file)
 		## test if the dest file is missing, or too old
-		#if (os.path.isfile(prog_file)
-		#	 and ctime(tgz_file) < ctime(prog_file)):
-		#	 cherrypy.log("not rebuild needed",
-		#				  context='BUILD', traceback=False)
-		#else:
-		#	 # extract the archive
-		#	 build.extract(tgz_file, self.src_dir)
-		#	 # build the program
-		#	 build.run("make -j4 -C %s axpb" % (self.src_dir + "axpb"),
-		#			   stdout=log_file)
-		#	 # save into bin dir
-		#	 if os.path.isdir(self.bin_dir):
-		#		 shutil.rmtree(self.bin_dir)
-		#	 os.mkdir(self.bin_dir)
-		#	 shutil.copy(self.src_dir + os.path.join("axpb", "axpb"), prog_file)
-		#	 # cleanup the source dir
-		#	 #shutil.rmtree(self.src_dir)
-		#return
+		if (os.path.isfile(prog_file)
+			 and ctime(tgz_file) < ctime(prog_file)):
+			 cherrypy.log("not rebuild needed",
+						  context='BUILD', traceback=False)
+		else:
+			 # extract the archive
+			 build.extract(tgz_file, self.src_dir)
+			 # build the program
+			 build.run("cd %s && cmake . && make" % (self.src_dir + "clg-87dfe8b"), 
+						stdout=log_file)
+			 print("make complete")
+			 # save into bin dir
+			 #if os.path.isdir(self.bin_dir):
+			 #	 shutil.rmtree(self.bin_dir)
+			 #os.mkdir(self.bin_dir)
+			 shutil.copy(self.src_dir + os.path.join("clg-87dfe8b", "bin") + "/test_clg_flow", prog_file)
+			 print("%s copied to bin directory" % prog_file)
+			 # cleanup the source dir
+			 shutil.rmtree(self.src_dir)
+			 # cleanup the dl dir
+			 shutil.rmtree(self.dl_dir)
+		return
 
 
 	@cherrypy.expose
@@ -103,7 +107,7 @@ class app(base_app):
 		http.redir_303(self.base_url + 'result?key=%s' % self.key)
 
 		## archive
-		#if self.cfg['meta']['original']:
+		##if self.cfg['meta']['original']:
 		ar = self.make_archive()
 		ar.add_file("a.png", info="input 1")
 		ar.add_file("b.png", info="input 2")
